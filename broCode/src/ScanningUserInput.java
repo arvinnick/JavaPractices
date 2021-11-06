@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
@@ -15,6 +16,11 @@ public class ScanningUserInput {
 
         String food = JOptionPane.showInputDialog("what delicious do you like?");
         JOptionPane.showMessageDialog(null, "You like "+food+".");
+
+        Random random = new Random();
+        int luckInt = random.nextInt(10);
+        JOptionPane.showMessageDialog(null, "Your lucky number is "+luckInt+".");
+
 
 
     }
