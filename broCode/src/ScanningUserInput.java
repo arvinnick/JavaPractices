@@ -19,6 +19,7 @@ public class ScanningUserInput {
 
         Random random = new Random();
         int luckInt = random.nextInt(10);
+
         JOptionPane.showMessageDialog(null, "Your lucky number is "+luckInt+".");
 
 
