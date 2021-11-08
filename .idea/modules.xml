@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/IdeaProjects.iml" filepath="$PROJECT_DIR$/.idea/IdeaProjects.iml" />
-      <module fileurl="file://$PROJECT_DIR$/courseraJavaCourseDukeUni/StringSecondAssignment/StringSecondAssignment.iml" filepath="$PROJECT_DIR$/courseraJavaCourseDukeUni/StringSecondAssignment/StringSecondAssignment.iml" />
-      <module fileurl="file://$PROJECT_DIR$/courseraJavaCourseDukeUni/StringsFirstAssignment/StringsFirstAssignment.iml" filepath="$PROJECT_DIR$/courseraJavaCourseDukeUni/StringsFirstAssignment/StringsFirstAssignment.iml" />
-      <module fileurl="file://$PROJECT_DIR$/courseraJavaCourseDukeUni/StringsThirdAssignment/StringsThirdAssignment.iml" filepath="$PROJECT_DIR$/courseraJavaCourseDukeUni/StringsThirdAssignment/StringsThirdAssignment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StringSecondAssignment/StringSecondAssignment.iml" filepath="$PROJECT_DIR$/StringSecondAssignment/StringSecondAssignment.iml" />
       <module fileurl="file://$PROJECT_DIR$/broCode/broCode.iml" filepath="$PROJECT_DIR$/broCode/broCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/debugTest/debugTest.iml" filepath="$PROJECT_DIR$/debugTest/debugTest.iml" />
     </modules>
