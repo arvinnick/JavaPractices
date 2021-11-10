@@ -1,7 +1,3 @@
-import java.lang.Math.*;
-
-import static java.lang.Math.min;
-
 public class StringSecondAssignmentPart1 {
 
     public static int findStopCodon(String dna,int startIndex, String stopCodon) {

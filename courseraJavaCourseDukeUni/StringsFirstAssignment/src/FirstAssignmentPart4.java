@@ -7,8 +7,8 @@ public class FirstAssignmentPart4 {
         URLResource urlResource = new URLResource(url);
         
         for (String s : urlResource.words()){
-            String sCopy = s.substring(0).toLowerCase();
-            if(sCopy.indexOf("youtube.com") != -1){
+            String sCopy = s.toLowerCase();
+            if(sCopy.contains("youtube.com")){
                 int index = s.indexOf("\"");
                 int lastIndex = s.lastIndexOf("\"");
                 System.out.println(s.substring(index,lastIndex+1));
@@ -17,7 +17,7 @@ public class FirstAssignmentPart4 {
     }
 
     public static void main(String[] args){
-        urlFinder("https://www.dukelearntoprogram.com//course2/data/manylinks.html");
+        urlFinder("http://www.dukelearntoprogram.com/course2/data/manylinks.html");
 
     }
 }
