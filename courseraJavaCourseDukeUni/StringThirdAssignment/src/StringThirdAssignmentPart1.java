@@ -5,7 +5,7 @@ public class StringThirdAssignmentPart1 {
     public static int findStopCodon(String dna,int startIndex, String stopCodon) {
         int index = dna.indexOf(stopCodon,startIndex);
         while (index != -1) {
-            if ((index - startIndex) % 3 == 0) {
+            if ((index - startIndex-1) % 3 == 0) {
                 return index;
             }
             else {

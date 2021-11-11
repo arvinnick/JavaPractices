@@ -1,5 +1,4 @@
 import edu.duke.StorageResource;
-import edu.duke.URLResource;
 
 
 public class StringThirdAssignmentPart3 {
@@ -51,7 +50,7 @@ public class StringThirdAssignmentPart3 {
                 CGCounter++;
             }
         }
-        return ((float)CGCounter)/dna.length();
+        return (float)CGCounter/dna.length();
     }
     public static StorageResource getAllGenes(String dna){
         StorageResource store = new StorageResource();
@@ -75,23 +74,37 @@ public class StringThirdAssignmentPart3 {
         for (String s : sr.data()){
             if (s.length() > 60){
                 moreThanNine++;
-                System.out.println("data in s with legth more than 9");
-                System.out.println(s);
+//                System.out.println("data in s with legth more than 9");
+//                System.out.println(s);
             }
             if (cGRatio(s)>0.35){
                 cGratCounter++;
-                System.out.println("data in s with CG ratio more than .35");
-                System.out.println(s);
+//                System.out.println("data in s with CG ratio more than .35");
+//                System.out.println(s);
             }
             if (s.length()>maxLegth){
                 maxLegth = s.length();
             }
         }
-        System.out.println("number of strings with more than nine charachters:   "+moreThanNine);
+        System.out.println("number of strings with more than 60 charachters:   "+moreThanNine);
         System.out.println("number of strings with CG ratio more than 0.35:   "+cGratCounter);
-        System.out.println("maximum length:   "+maxLegth);
+//        System.out.println("maximum length:   "+maxLegth);
 
 
+    }
+    public static int howMany(String stringa, String stringb){
+        int counter = 0;
+        while (true){
+            int index = stringb.indexOf(stringa);
+            if (index == -1){
+                break;
+            }
+            else{
+                stringb = stringb.substring(index + stringa.length());
+                counter++;
+            }
+        }
+        return counter;
     }
 
 
@@ -101,10 +114,16 @@ public class StringThirdAssignmentPart3 {
         The main script for quiz
 
          */
-        URLResource url = new URLResource("http://www.cs.duke.edu/~rodger/GRch38dnapart.fa");
-        String dna = url.asString();
-        StorageResource genes = getAllGenes(dna);
-        processGene(genes);
 
+//        URLResource url = new URLResource("https://users.cs.duke.edu/~rodger/GRch38dnapart.fa");
+//        String dna = url.asString();
+//        StorageResource genes = getAllGenes(dna);
+//        processGene(genes);
+//        System.out.println(genes.size());
+//        System.out.println("number of CTG occurences in the DNA:   "+howMany("CTG",dna));
+
+        String s = "ABHDEFGH";
+        System.out.println(s.indexOf("H",3));
     }
+
 }
