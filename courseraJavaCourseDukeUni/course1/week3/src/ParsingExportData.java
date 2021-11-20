@@ -39,6 +39,15 @@ public class ParsingExportData {
         }
     }
 
+    public static void allExporters(CSVParser parser,String item1,String item2){
+        for (CSVRecord record : parser) {
+            String info = record.get("Exports");
+            if (info.contains(item1) && info.contains(item2)) {
+                System.out.println(record.get("Country"));
+            }
+        }
+    }
+
     public static void main(String[] args){
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
