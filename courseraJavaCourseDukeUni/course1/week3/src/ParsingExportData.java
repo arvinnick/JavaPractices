@@ -42,6 +42,6 @@ public class ParsingExportData {
     public static void main(String[] args){
         FileResource fr = new FileResource();
         CSVParser parser = fr.getCSVParser();
-        bigExporters(parser, "$999,999,999");
+        bigExporters(parser, "$999,999,999,999");
     }
 }
