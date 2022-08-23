@@ -48,8 +48,8 @@ public class cesarCipher {
         return ret;
     }
     static void testEncrypt(){
-        System.out.println(encrypt("FIrST LEgION ATTACK EAST FLANK!",
-                23).equals("CFoPQ IBdFLK XQQXZH BXPQ CIXKH!"));
+        System.out.println(encrypt("At noon be in the conference room with your hat on for a surprise party. YELL LOUD!",
+                8));//.equals("CFoPQ IBdFLK XQQXZH BXPQ CIXKH!"));
     }
 
     static void testCaesar() {
