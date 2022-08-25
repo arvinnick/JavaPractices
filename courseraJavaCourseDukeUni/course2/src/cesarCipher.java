@@ -10,10 +10,18 @@ public class cesarCipher {
         String ret;
         //write the alphabet
         //take the tail (substrig by key)
-        String tail = alphabet.substring(key);
-        //take the head (substring begin with 0 and end with key)
-        String head = alphabet.substring(0,key);
-        //add the tail to the head
+        String head = "";
+        String tail = "";
+        if (key < 0){
+            key = -1 * key;
+            tail = alphabet.substring(alphabet.length() - key);
+            head = alphabet.substring(0,alphabet.length()-key);
+        } else {
+            tail = alphabet.substring(key);
+            //take the head (substring begin with 0 and end with key)
+            head = alphabet.substring(0,key);
+            //add the tail to the head
+        }
         ret = tail + head;
         return ret;
     }
