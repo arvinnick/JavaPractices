@@ -1,12 +1,17 @@
-import edu.duke.FileResource;
+public class CesarCipher {
 
-import java.nio.file.LinkPermission;
+    final String alphabet;
+    private String shiftedAlphabet;
+    private char[] alphabetArray;
+    private int key;
 
-
-public class cesarCipher {
-    
-    static String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    static String stringShifter(int key){
+    public CesarCipher(int key){
+        this.key = key;
+        alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        this.shiftedAlphabet = stringShifter(key);
+        alphabetArray = alphabet.toCharArray();
+    }
+    private String stringShifter(int key){
         String ret;
         //write the alphabet
         //take the tail (substrig by key)
@@ -25,11 +30,11 @@ public class cesarCipher {
         ret = tail + head;
         return ret;
     }
-    static String encrypt(String input, int key){
+    public String encrypt(String input){
         //initialize the return
         String ret = "";
         //build the shiftedAlphabet
-        String shiftedAlphabet = stringShifter(key);
+        String shiftedAlphabet = stringShifter(this.key);
         //for charachter in input:
         for (int i = 0; i < input.length(); i++) {
             //turn the charachter into upper case
@@ -55,31 +60,22 @@ public class cesarCipher {
         }
         return ret;
     }
-    static void testEncrypt(){
-        System.out.println(encrypt("At noon be in the conference room with your hat on for a surprise party. YELL LOUD!",
-                8));//.equals("CFoPQ IBdFLK XQQXZH BXPQ CIXKH!"));
-    }
+    public String decrypt(String input){
+        CesarCipher cc = new CesarCipher(26 - this.key);
+        char[] message = cc.encrypt(input).toCharArray();
 
-    static void testCaesar() {
-        FileResource fr = new FileResource();
-        String message = fr.asString();
-        String encrypted = encrypt(message, 12);
-        System.out.println("key is " + 12 + "\n" + encrypted);
-    }
-    static void testStringShifter(){
-        if(stringShifter(12).equals("MNOPQRSTUVWXYZABCDEFGHIJKL")){
-            System.out.println("test 1 passed");
-        }
-        if(stringShifter(13).equals("NOPQRSTUVWXYZABCDEFGHIJKLM")) {
-            System.out.println("test 2 passed");
-        }
-            if (stringShifter(20).equals("UVWXYZABCDEFGHIJKLMNOPQRST")) {
-                System.out.println("test 2 passed");
-            }
+        int index = 0;
+        char[] inputArray = input.toCharArray();
+        for (int i = 0; index < inputArray.length - 1; i++){
+            inputArray[index] = message[i];
+            index = index + 1;
         }
 
-    public static void main(String[] arg){
-        testEncrypt();
+        String res = String.valueOf(inputArray);
+        return res;
+    }
+    public void main(String[] arg){
+
     }
 
 
