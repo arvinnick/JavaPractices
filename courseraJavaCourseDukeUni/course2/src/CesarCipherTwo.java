@@ -1,18 +1,18 @@
 public class CesarCipherTwo {
-    private String alphabet;
-    private String shiftedAlphabet1;
-    private String shiftedAlphabet2;
-    private char[] alphabetArray;
-    private int key1;
-    private int key2;
+    final private String alphabet;
+    final private String shiftedAlphabet1;
+    final private String shiftedAlphabet2;
+    final private char[] alphabetArray;
+    final private int key1;
+    final private int key2;
 
 
     private String stringShifter(int key){
         String ret;
         //write the alphabet
         //take the tail (substrig by key)
-        String head = "";
-        String tail = "";
+        String head;
+        String tail;
         if (key < 0){
             key = -1 * key;
             tail = alphabet.substring(alphabet.length() - key);
@@ -72,64 +72,49 @@ public class CesarCipherTwo {
             dkey = 26 - (4 - firstMax);
         }
 
-        int key = 26 - dkey;
-        return key;
+        return 26 - dkey;
     }
     public String encrypt(String input){
-        //initialize the return
-        char[] ret = input.toCharArray();
-        char[] inputArray = input.toCharArray();
-        //array of the shifted alphabets
-        char[] shiftedAlphabet1Array = this.shiftedAlphabet1.toCharArray();
-        char[] shiftedAlphabet2Array = this.shiftedAlphabet2.toCharArray();
-        //build a check (if zero, take the letter from sh1 else from sh2)
-        int check = 0;
-        //for ch in input array
-        int cInput = 0;
-        for (char ch : inputArray) {
-            //counter = 0
-            int c = 0;
-            //keep track of the case of the character and then capitalize it
-            boolean capital = Character.isUpperCase(ch);
-            ch = Character.toUpperCase(ch);
-            //find the input letter number in alphabet
-            for (char letter : alphabetArray) {
-                if (ch == letter) {
-                    break;
-                }
-                c++;
-            }
-            char retChar;
-            //if check is zero:
+        boolean isNotCapital;
+        char[] inputArrat = input.toCharArray();
+        int check = 0;//if zero, take it from the
+        for (int i = 0; i < inputArrat.length; i++) {//loop over the input
+            isNotCapital = Character.isLowerCase(inputArrat[i]);
+            inputArrat[i] = Character.toUpperCase(inputArrat[i]);
+            //if check is zero
             if (check == 0) {
-                //ret[counter] = sh1[counter]
+                //take the letter from shifted1 and put it in input array
+                int indexOfShifted = alphabet.indexOf(inputArrat[i]);
                 try {
-                    retChar = shiftedAlphabet1Array[c];
-                }catch(ArrayIndexOutOfBoundsException indexError){
-                    cInput++;
+                    inputArrat[i] = this.shiftedAlphabet1.charAt(indexOfShifted);
+                } catch (StringIndexOutOfBoundsException indexError){
                     check = 1;
                     continue;
                 }
-                //check = 1
-            //else
-            } else {
-                //ret[counter] = sh1[counter]
+                //set check as one
+                check = 1;
+                if (isNotCapital){
+                    inputArrat[i] = Character.toLowerCase(inputArrat[i]);
+                }
+            }
+            //if the check is one
+            else {
+                //take the letter from shifted2 and put it in input array
+                int indexOfShifted = alphabet.indexOf(inputArrat[i]);
                 try {
-                    retChar = shiftedAlphabet2Array[c];
-                }catch(ArrayIndexOutOfBoundsException indexError) {
-                    cInput++;
+                    inputArrat[i] = this.shiftedAlphabet2.charAt(indexOfShifted);
+                } catch (StringIndexOutOfBoundsException indexError){
                     check = 0;
                     continue;
                 }
+                //set check as zero
+                check = 0;
+                if (isNotCapital){
+                    inputArrat[i] = Character.toLowerCase(inputArrat[i]);
+                }
             }
-            //return to the original case of the letter
-            if (!capital){
-                retChar = Character.toLowerCase(retChar);
-            }
-            ret[cInput] = retChar;
-            cInput++;
         }
-            return String.valueOf(ret);
+        return String.valueOf(inputArrat);
     }
     public String decryptTwoKeys(String input){
 

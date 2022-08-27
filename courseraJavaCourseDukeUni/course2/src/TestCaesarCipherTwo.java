@@ -3,7 +3,7 @@ import edu.duke.FileResource;
 public class TestCaesarCipherTwo {
 
     static String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private static char[] alphabetArray = alphabet.toCharArray();
+    final private static char[] alphabetArray = alphabet.toCharArray();
     private static char[] halfOfString(String message, int start){
         char[] inputArray = message.toCharArray();
         int oddIndex = start;
@@ -26,12 +26,11 @@ public class TestCaesarCipherTwo {
     private static int[] countLetters(char[] inputArray){
         int[] res = new int[26];
         for (char ch : inputArray){
-            int resPosition = 0;
             for (char alph : alphabetArray){
                 if (alph == Character.toUpperCase(ch)){
-                    res[resPosition]++;
+                    res[alphabet.indexOf(alph)]++;
+                    break;
                 }
-                resPosition++;
             }
         }
         return res;
@@ -41,7 +40,7 @@ public class TestCaesarCipherTwo {
         int max = Integer.MIN_VALUE;
         int c = 0;
         for (int i : inputArray){
-            if (i > max){
+            if (i >= max){
                 max = i;
                 maxIndex = c;
             }
@@ -53,11 +52,15 @@ public class TestCaesarCipherTwo {
         CesarCipherTwo cc = new CesarCipherTwo(17, 10);
         FileResource file = new FileResource();
         System.out.println(file.asString());
+        System.out.println("''''''''");
         String enc = cc.encrypt(file.asString());
         System.out.println(enc);
         String dec = cc.decryptTwoKeys(enc);
+        System.out.println("''''''''");
         System.out.println(dec);
-        System.out.println(breakCaesarCipher(enc));
+        System.out.println("''''''''");
+        String dec2 = breakCaesarCipher(enc);
+        System.out.println(dec2);
 
 
     }
